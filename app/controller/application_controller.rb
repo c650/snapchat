@@ -15,15 +15,26 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post '/' do
+		@all_snaps = Snap.all
+		@all_users = User.all
+		Snap.create(image_file: params[:image_file], caption: params[:caption], user_id: params[:user_id])
 		redirect to '/'
 	end
 
-	# get '/new_user' do
+	get '/new_user' do
 
-	# end
+		@all_snaps = Snap.all
+		@all_users = User.all
+		erb :new_user
+	end
 
-	# post '/new_user'
-		
-	# end
+	post '/new_user' do
+
+		User.create(username: params[:username])
+		@all_snaps = Snap.all
+		@all_users = User.all
+
+		redirect to "/"
+	end
 
 end
