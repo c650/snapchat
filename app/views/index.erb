@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+		<title>Snapchat</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div id="send_a_snap" class="row">
+				<!-- <span> -->
+					<div class="col-xs-4">
+						<h3>Snap a Friend!</h3>
+							<form action="/" method="POST">
+								<input type="text" name="image_file" placeholder="Image URL">
+								<input type="text" name="caption" placeholder="Caption">
+								<button type="submit" id="submit_pic" class="btn btn-default">Snap!</button> 
+							</form>
+					</div>
+				<!-- </span> -->
+				<!-- <span> -->
+					<div id="snap_feed" class="col-xs-8">
+						<h3>Your Feed</h3>
+						
+						<div id="snap_feed_inner">
+
+							<% @all_snaps.each do |snap| %>
+								<div class="snap">
+									<h5><%= snap.user.username %></h5>
+									<img id="snap_pic" src="<%=snap.image_file%>"/>
+									<p><%= snap.caption %></p>
+								</div>
+							<%end%>
+
+						</div>
+					</div>
+				<!-- </span> -->
+			</div>
+		</div>
+	</body>
+
+</html>
